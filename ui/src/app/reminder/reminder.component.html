@@ -1,5 +1,29 @@
-<mat-card>
-  <mat-card-title>
+<mat-card class="full-width">
+  <mat-card-title >
     {{reminder.title}}
   </mat-card-title>
+
+  <mat-card-content>
+    <hr>
+    <div>
+      <mat-icon>date_range</mat-icon>
+      <span>{{reminder.date}}</span>
+      <mat-icon>access_time</mat-icon>
+      <span>{{reminder.time}}</span>
+    </div>
+    <div>
+      <span>{{reminder.description}}</span>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="btn-container">
+    <button mat-button (click)="finish()">
+      <mat-icon>done</mat-icon>
+      <span>FINISH</span>
+    </button>
+    <button mat-button (click)="remove()">
+      <mat-icon>delete</mat-icon>
+      <span>REMOVE</span>
+    </button>
+  </mat-card-actions>
 </mat-card>

@@ -1,11 +1,9 @@
 <div class="container">
   <app-header></app-header>
-  <!--<button mat-button (click)="addReminder(e)">ADD REMINDER</button>-->
-  <!--<button mat-button (click)="removeReminders()">CLEAR ALL</button>-->
-  <mat-grid-list cols="3" rowHeight="3:1">
+
+  <mat-grid-list cols="4">
     <mat-grid-tile *ngFor="let reminder of reminders">
       <app-reminder [reminder]="reminder"></app-reminder>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-

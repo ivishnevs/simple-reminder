@@ -3,7 +3,6 @@ import {Subject} from "rxjs/Subject";
 
 let key = 'reminders';
 
-// localStorage wrapper
 let storage = {
   getItem(key: string) {
     try {
@@ -45,6 +44,8 @@ export class RemindersService {
   addReminder(reminder) {
     try {
       let reminders: any[] = storage.getItem(key);
+      reminder.id = Math.random() * Math.pow(10, 10);
+      reminder.finished = false;
       reminders.push(reminder);
       storage.setItem(key, reminders);
       this.reminders.next(reminders);
@@ -59,6 +60,38 @@ export class RemindersService {
       this.getReminders();
     } catch (err) {
       throw err;
+    }
+  }
+
+  removeReminder(reminder) {
+    try {
+      let reminders: any[] = storage.getItem(key);
+      let index = this.getReminderIndex(reminders, reminder);
+      reminders.splice(index, 1);
+      storage.setItem(key, reminders);
+      this.reminders.next(reminders);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  finishReminder(reminder) {
+    try {
+      let reminders: any[] = storage.getItem(key);
+      let index = this.getReminderIndex(reminders, reminder);
+      reminders[index].finished = true;
+      storage.setItem(key, reminders);
+      this.reminders.next(reminders);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  getReminderIndex(reminders, reminder) {
+    for (let i = 0; i < reminders.length; i++) {
+      if (reminders[i].id === reminder.id) {
+        return i;
+      }
     }
   }
 }

@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Create reminder</h1>
+
+<div mat-dialog-content>
+  <form class="form">
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="reminder.title"
+        [ngModelOptions]="{standalone: true}"
+      >
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea
+        matInput
+        required
+        placeholder="Description"
+        [(ngModel)]="reminder.description"
+        [ngModelOptions]="{standalone: true}"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        required
+        type="date"
+        placeholder="Date"
+        [(ngModel)]="reminder.date"
+        [ngModelOptions]="{standalone: true}"
+      >
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        required
+        type="time"
+        placeholder="Time"
+        [(ngModel)]="reminder.time"
+        [ngModelOptions]="{standalone: true}"
+      >
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="create()">CREATE</button>
+  <button mat-button (click)="cancel()">CANCEL</button>
+</div>

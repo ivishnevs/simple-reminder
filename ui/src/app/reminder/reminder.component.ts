@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {RemindersService} from "../reminders.service";
 
 @Component({
   selector: 'app-reminder',
@@ -9,9 +10,15 @@ export class ReminderComponent implements OnInit {
 
   @Input() reminder;
 
-  constructor() { }
+  constructor(private remindersService: RemindersService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  remove() {
+    this.remindersService.removeReminder(this.reminder);
   }
 
+  finish() {
+    this.remindersService.finishReminder(this.reminder);
+  }
 }
