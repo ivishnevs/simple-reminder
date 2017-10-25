@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+        <span>Create new reminder</span>
+      </button>
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">
+    <button mat-button>SIMPLE REMINDER</button>
+  </span>
+  <span>
+    <a href="https://github.com/rdmitrij/simple-reminder" target="_blank" mat-button>GitHub</a>
+  </span>
+</mat-toolbar>
