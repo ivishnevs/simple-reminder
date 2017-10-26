@@ -1,15 +1,21 @@
-<mat-card class="full-width">
-  <mat-card-title >
-    {{reminder.title}}
+<mat-card class="card-wrapper" >
+  <mat-card-title>
+      <span
+        *ngIf="reminder.finished"
+        class="finished-chip"
+      >
+        FINISHED
+      </span>
+      <span class="title">{{reminder.title}}</span>
+    <hr>
   </mat-card-title>
 
   <mat-card-content>
-    <hr>
-    <div>
+    <div class="time-wrapper">
       <mat-icon>date_range</mat-icon>
-      <span>{{reminder.date}}</span>
+      <span class="time">{{reminder.date}}</span>
       <mat-icon>access_time</mat-icon>
-      <span>{{reminder.time}}</span>
+      <span class="time">{{reminder.time}}</span>
     </div>
     <div>
       <span>{{reminder.description}}</span>
@@ -17,7 +23,7 @@
   </mat-card-content>
 
   <mat-card-actions class="btn-container">
-    <button mat-button (click)="finish()">
+    <button mat-button (click)="finish()" *ngIf="!reminder.finished">
       <mat-icon>done</mat-icon>
       <span>FINISH</span>
     </button>

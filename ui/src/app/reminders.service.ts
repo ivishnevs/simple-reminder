@@ -26,7 +26,6 @@ export class RemindersService {
   reminders: Subject<any> = new Subject<any>();
 
   constructor() {
-    console.log('constructor works');
     if (!storage.getItem(key)) {
       storage.setItem(key, [])
     }

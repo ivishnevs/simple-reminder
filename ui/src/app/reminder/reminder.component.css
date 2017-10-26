@@ -1,9 +1,25 @@
-.full-width {
-  min-width: 150px;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 .btn-container {
   text-align: center;
+}
+
+.card-wrapper {
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.finished-chip {
+  margin: 0 10px 0 0 !important;
+  color: darkgray;
+}
+
+.time-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.time {
+  font-weight: bold;
+  padding: 5px;
 }
