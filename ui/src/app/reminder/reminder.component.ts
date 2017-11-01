@@ -18,7 +18,7 @@ export class ReminderComponent implements OnInit {
     this.remindersService.removeReminder(this.reminder);
   }
 
-  finish() {
-    this.remindersService.finishReminder(this.reminder);
+  complete() {
+    this.remindersService.completeReminder(this.reminder);
   }
 }

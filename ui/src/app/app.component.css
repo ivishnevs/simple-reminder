@@ -1,4 +1,23 @@
 .blank-reminders-message {
   text-align: center;
   font: 20px Arial;
+  padding: 30px;
+}
+
+.options-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 65px;
+}
+
+.options-field {
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 355px;
+}
+
+@media screen and (max-width: 830px) {
+  .options-field {width: 100%}
 }

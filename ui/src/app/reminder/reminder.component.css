@@ -1,25 +1,31 @@
-.btn-container {
-  text-align: center;
+.reminder-card {
+  margin: 15px 30px;
 }
 
-.card-wrapper {
-  background-color: rgba(0, 0, 0, 0.1);
-  margin-top: 15px;
-  margin-bottom: 15px;
+.completed-card {
+  margin: 15px 30px;
+  background-color: rgba(0,0,0,0.15);
 }
 
 .finished-chip {
-  margin: 0 10px 0 0 !important;
   color: darkgray;
 }
 
-.time-wrapper {
+.flex-row-wrap {
+  padding: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
-.time {
+.strong-text {
   font-weight: bold;
-  padding: 5px;
+  vertical-align: bottom;
+}
+
+.icon {
+  margin: 0 4px;
+  padding-left: 16px;
+  vertical-align: bottom;
 }

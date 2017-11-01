@@ -1,35 +1,31 @@
-<mat-card class="card-wrapper" >
+<mat-card class="reminder-card" [ngClass]="{'completed-card': reminder.completed}">
   <mat-card-title>
-      <span
-        *ngIf="reminder.finished"
-        class="finished-chip"
-      >
-        FINISHED
-      </span>
-      <span class="title">{{reminder.title}}</span>
-    <hr>
+    <span class="finished-chip" *ngIf="reminder.completed">COMPLETED</span>
+    {{reminder.title}}
   </mat-card-title>
 
   <mat-card-content>
-    <div class="time-wrapper">
-      <mat-icon>date_range</mat-icon>
-      <span class="time">{{reminder.date}}</span>
-      <mat-icon>access_time</mat-icon>
-      <span class="time">{{reminder.time}}</span>
-    </div>
-    <div>
-      <span>{{reminder.description}}</span>
-    </div>
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of reminder.tags" selected="true" color="primary">{{tag}}</mat-chip>
+    </mat-chip-list>
   </mat-card-content>
 
-  <mat-card-actions class="btn-container">
-    <button mat-button (click)="finish()" *ngIf="!reminder.finished">
-      <mat-icon>done</mat-icon>
-      <span>FINISH</span>
-    </button>
-    <button mat-button (click)="remove()">
-      <mat-icon>delete</mat-icon>
-      <span>REMOVE</span>
-    </button>
+  <mat-card-actions class="flex-row-wrap">
+    <div>
+      <mat-icon class="icon">date_range</mat-icon>
+      <span class="strong-text">{{reminder.date}}</span>
+      <mat-icon class="icon">access_time</mat-icon>
+      <span class="strong-text">{{reminder.time}}</span>
+    </div>
+    <div>
+      <button mat-button (click)="complete()" *ngIf="!reminder.completed">
+        <mat-icon>done</mat-icon>
+        <span>COMPLETE</span>
+      </button>
+      <button mat-button (click)="remove()">
+        <mat-icon>delete</mat-icon>
+        <span>REMOVE</span>
+      </button>
+    </div>
   </mat-card-actions>
 </mat-card>

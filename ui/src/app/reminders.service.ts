@@ -44,7 +44,7 @@ export class RemindersService {
     try {
       let reminders: any[] = storage.getItem(key);
       reminder.id = Math.random() * Math.pow(10, 10);
-      reminder.finished = false;
+      reminder.completed = false;
       reminders.push(reminder);
       storage.setItem(key, reminders);
       this.reminders.next(reminders);
@@ -74,11 +74,11 @@ export class RemindersService {
     }
   }
 
-  finishReminder(reminder) {
+  completeReminder(reminder) {
     try {
       let reminders: any[] = storage.getItem(key);
       let index = this.getReminderIndex(reminders, reminder);
-      reminders[index].finished = true;
+      reminders[index].completed = true;
       storage.setItem(key, reminders);
       this.reminders.next(reminders);
     } catch (err) {

@@ -18,10 +18,10 @@ export class HeaderComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(AddDialogComponent, {
       data: {
-        description: '',
         title: '',
         date: '',
         time: '',
+        tags: [],
       }
     });
 

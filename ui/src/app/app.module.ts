@@ -8,13 +8,17 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatDialogModule,
+  MatSelectModule,
   MatInputModule,
+  MatChipsModule,
   MatCardModule,
   MatMenuModule,
   MatIconModule,
   MatListModule,
 } from '@angular/material';
 import { FormsModule } from '@angular/forms'
+import { SearchPipe } from './search.pipe';
+import { FilterPipe } from './filter.pipe';
 
 
 import { AppComponent } from './app.component';
@@ -24,10 +28,12 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AddDialogComponent,
     ReminderComponent,
     HeaderComponent,
-    AddDialogComponent,
+    AppComponent,
+    SearchPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,7 +43,9 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
+    MatSelectModule,
     MatInputModule,
+    MatChipsModule,
     BrowserModule,
     MatCardModule,
     MatMenuModule,

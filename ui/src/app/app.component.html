@@ -1,7 +1,29 @@
 <div class="container">
   <app-header></app-header>
-  <app-reminder *ngFor="let reminder of reminders" [reminder]="reminder"></app-reminder>
-  <p *ngIf="!reminders.length" class="blank-reminders-message">
-    You don't have any reminders yet. To add a reminder, click the ellipsis in the upper left corner and select "create new reminder"
+
+  <div class="options-block">
+    <mat-form-field class="options-field" color="primary">
+      <input matInput
+             type="text"
+             [(ngModel)]="searchStr"
+             [ngModelOptions]="{standalone: true}"
+             placeholder="Search by keywords..."
+      />
+    </mat-form-field>
+
+    <mat-form-field class="options-field">
+      <mat-select placeholder="Filter" [(ngModel)]="filterStr">
+        <mat-option *ngFor="let filter of filters" [value]="filter">{{filter}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <app-reminder *ngFor="let reminder of reminders | filter:filterStr | search:searchStr"
+                [reminder]="reminder">
+  </app-reminder>
+
+  <p class="blank-reminders-message" *ngIf="!reminders.length">
+    You don't have any reminders yet. To add a reminder, click the ellipsis in the upper left corner and select "create
+    new reminder"
   </p>
 </div>
