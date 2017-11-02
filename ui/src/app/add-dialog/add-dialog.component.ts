@@ -1,7 +1,6 @@
 import {Component, OnInit, Inject} from "@angular/core";
-import {MatDialogRef, MAT_DIALOG_DATA, MAT_PLACEHOLDER_GLOBAL_OPTIONS} from "@angular/material";
-import {MatChipInputEvent} from '@angular/material';
-import {ENTER} from '@angular/cdk/keycodes';
+import {MatDialogRef, MAT_DIALOG_DATA, MAT_PLACEHOLDER_GLOBAL_OPTIONS, MatChipInputEvent} from "@angular/material";
+import {ENTER} from "@angular/cdk/keycodes";
 
 const COMMA = 188;
 
@@ -50,18 +49,19 @@ export class AddDialogComponent implements OnInit {
 
   create(): void {
     if (this.isValidForm(this.reminder)) {
+      this.addTimestamp();
       this.dialogRef.close(this.reminder);
     }
   }
 
-  isValidForm(reminder) {
-    let isValid: boolean = true;
-    for (let key in reminder) {
-      if (!reminder[key]) {
-        isValid = false;
-        break;
-      }
-    }
-    return isValid;
+  addTimestamp() {
+    let [year, month, date] = this.reminder.date.split('-');
+    let [hours, minutes] = this.reminder.time.split(':');
+    let timestamp = new Date(year, month - 1, date, hours, minutes).getTime();
+    this.reminder.timestamp = timestamp;
+  }
+
+  isValidForm({title, date, time}) {
+    return title && date && time;
   }
 }

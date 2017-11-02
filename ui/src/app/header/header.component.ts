@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(AddDialogComponent, {
       data: {
+        id: Math.random() * Math.pow(10, 10),
+        completed: false,
+        notified: false,
         title: '',
         date: '',
         time: '',
