@@ -45,7 +45,28 @@ export class AppComponent {
   }
 
   notify(reminder) {
-    alert(`TITLE: ${reminder.title}; TAGS: ${reminder.tags}`);
+    let title = reminder.title;
+    let options = {
+      icon: '../assets/img/notification-icon.png',
+      body: reminder.tags.join(', '),
+    };
+
+    if (!('Notification' in window)) {
+      alert('Sorry, your browser don\'t support notifications!');
+    }
+
+    let Notification = window['Notification'];
+
+    if (Notification.permission === 'granted') {
+      let notification = new Notification(title, options);
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission((permission) => {
+        if (permission === "granted") {
+          let notification = new Notification(title, options);
+        }
+      });
+    }
+
     this.remindersService.notifyReminder(reminder);
   }
 }
